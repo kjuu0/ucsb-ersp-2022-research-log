@@ -9,7 +9,7 @@
 - [x] Set up research log
 - [x] Complete Reflection 1: Identity and ERSP preliminary thoughts
 - [ ] Meet the rest of the team
-- [ ] Reflect on research logs
+- [x] Reflect on research logs
 
 ### Accomplishments
 
@@ -17,6 +17,7 @@
 
 - Set up research log. Chose to use Github Markdown because I'm a fan of the aesthetics/formatting and it makes linking other documents in the same repo easy.
 - Finished Reflection 1.
+- Finished reading & [reflecting on the research logs.](/LOG_REFLECTIONS.md)
 - Finalized a meeting time for the team on Slack for Thursday 4-5 PM.
 - I'm most excited about:
   - Meeting my team/professors
