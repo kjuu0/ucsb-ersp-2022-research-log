@@ -23,6 +23,6 @@
   - Meeting my team/professors
   - Stepping out of my comfort zone
   - Doing research on distributed systems
- - I'm most nervous about:
+- I'm most nervous about:
   - Keeping up with my teammates
   - Balancing my schedule
