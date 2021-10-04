@@ -1,17 +1,38 @@
 # Research Log
 
+## Week 2 (10/04-10/11)
+
+### Goals
+
+- [ ] Finish reading/understanding the intro material that Ishtiyaque provided
+
 ## Week 1 (09/27-10/03)
 
 ### Goals
 
-- [ ] Communicate with professors to get a finalized research meeting time
-- [ ] (Maybe) Attend the first research meeting
+- [x] Communicate with professors to get a finalized research meeting time
+- [x] (Maybe) Attend the first research meeting
 - [x] Set up research log
 - [x] Complete Reflection 1: Identity and ERSP preliminary thoughts
-- [ ] Meet the rest of the team
+- [x] Meet the rest of the team
 - [x] Reflect on research logs
 
 ### Accomplishments
+
+#### Sunday, 10/03 (1 hour)
+
+- Communicated with Ishtiyaque (research mentor) to start setting up weekly meetings
+  - Still finalizing available times
+- Set up a group page  
+
+#### Thursday, 09/30 (1 hour)
+
+- Attended group meeting session
+- Set up meeting on Monday (10/04) with Chinmay
+
+#### Wednesday, 09/29 (1 hour)
+
+- Attended research meeting
 
 #### Tuesday, 09/28 (2 hours)
 
