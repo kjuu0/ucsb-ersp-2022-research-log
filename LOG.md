@@ -22,7 +22,7 @@
 #### Sunday, 10/03 (1 hour)
 
 - Communicated with Ishtiyaque (research mentor) to start setting up weekly meetings
-  - Still finalizing available times
+  - Waiting on Ishtiyaque to provide his availability
 - Set up a group page  
 
 #### Thursday, 09/30 (1 hour)
