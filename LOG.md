@@ -5,9 +5,13 @@
 ### Goals
 
 - [x] Read the how to read an article paper
-- [ ] Finish reading/understanding/taking notes the intro material that Ishtiyaque provided
+- [x] Finish first pass of reading/understanding/taking notes the intro material that Ishtiyaque provided
 
 ### Accomplishments
+
+#### Tuesday, 10/05 (4 hours)
+
+- Took notes on a brief first pass of [Addra](papers/addra.md)
 
 #### Monday, 10/04 (1 hour)
 
