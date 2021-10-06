@@ -4,7 +4,14 @@
 
 ### Goals
 
-- [ ] Finish reading/understanding the intro material that Ishtiyaque provided
+- [x] Read the how to read an article paper
+- [ ] Finish reading/understanding/taking notes the intro material that Ishtiyaque provided
+
+### Accomplishments
+
+#### Monday, 10/04 (1 hour)
+
+- Finished reading the "How to Read a Paper" article
 
 ## Week 1 (09/27-10/03)
 
