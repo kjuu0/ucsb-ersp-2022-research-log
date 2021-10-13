@@ -9,6 +9,11 @@
 
 ### Accomplishments
 
+#### Wednesday, 10/13 (2 hours)
+
+- Did more reading into BFV encryption & CPIR
+- Gave the Addra paper some additional passes
+
 ## Week 2 (10/04-10/10)
 
 ### Goals
