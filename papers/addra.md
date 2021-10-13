@@ -18,9 +18,7 @@ Voice call metadata can be collected and combined to uniquely identify traits of
 
 - Pung
 - PIR cryptographic protocol
-- FastPIR cryptographic protocol
 - BFV homomorphic encryption scheme
-- Homomorphic rotation operations
 
 An understanding of these systems/concepts seems essential in understanding how Addra works, since Addra is so heavily reliant on these protocols and cryptographic concepts to ensure privacy.
 
@@ -86,3 +84,24 @@ So, the general steps of CPIR is still the same, but we introduce BFV encryption
 
 BFV's rotation property is essential for the rotation/compression scheme outlined in the answer/decode steps.
 
+## Part 2.1
+
+### CPIR cryptographic protocol
+
+PIR stands for private information retrieval. It allows clients to query some database server for some item `i` without the server knowing what `i` is. There are two types of PIR schemes; information-theoretic PIR (ITPIR) and computational PIR (CPIR). Addra utilizes CPIR for its retrieval scheme, as ITPIR requires multiple replicated databases whereas CPIR can be implemented with only one.
+
+Sources:
+
+- https://en.wikipedia.org/wiki/Private_information_retrieval
+- https://people.csail.mit.edu/silvio/Selected%20Scientific%20Papers/Private%20Information%20Retrieval/Computationally%20Private%20Information%20Retrieval%20with%20Polylogarithmic%20Communication.pdf
+
+### BFV homomorphic encryption scheme
+
+The BFV homomorphic encryption scheme is a homomorphic encryption scheme developed by Brakerski and Fan-Vercauteren (where the name comes from). Homomorphic encryption schemes are based off of the homomorphism property, which is a mapping between two objects of the same types that preserves the operations of the two objects. So, if `*` is some operation supported by two types `x` and `y` (like multiplication), and `f` is the homomorphic mapping, then `f(x * y) = f(x) * f(y)`. This property makes it possible to compute on encrypted data, which makes things more secure. The BFV encryption scheme offers relatively high performance compared to other homomorphic encryption schemes.
+
+Sources:
+
+- https://en.wikipedia.org/wiki/Homomorphic_encryption
+- https://inferati.azureedge.net/docs/fhe-bfv.pdf
+- https://medium.com/privacy-preserving-natural-language-processing/homomorphic-encryption-for-beginners-a-practical-guide-part-1-b8f26d03a98a
+- https://www.ic.unicamp.br/~reltech/PFG/2018/PFG-18-28.pdf
