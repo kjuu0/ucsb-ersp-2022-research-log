@@ -1,6 +1,15 @@
 # Research Log
 
-## Week 2 (10/04-10/11)
+## Week 3 (10/11-10/17)
+
+### Goals
+
+- [ ] Start doing more specific research into assigned topics (BFV encryption specifically)
+- [ ] Look more into Addra/FastPIR source code
+
+### Accomplishments
+
+## Week 2 (10/04-10/10)
 
 ### Goals
 
@@ -8,6 +17,14 @@
 - [x] Finish first pass of reading/understanding/taking notes the intro material that Ishtiyaque provided
 
 ### Accomplishments
+
+#### Friday, 10/08 (0.5 hours)
+
+- Met with the team and discussed which topics we should do more research into
+
+#### Wednesday, 10/06 (1 hour)
+
+- Attended research meeting & got more context on the possible projects
 
 #### Tuesday, 10/05 (4 hours)
 
