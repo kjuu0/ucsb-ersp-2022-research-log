@@ -1,13 +1,29 @@
 # Research Log
 
+## Week 4 (10/18-10/24)
+
+### Goals
+
+- [ ] Prepare teaching materials on FastPIR
+- [ ] Investigate recursion in CPIR schemes
+
 ## Week 3 (10/11-10/17)
 
 ### Goals
 
-- [ ] Start doing more specific research into assigned topics (BFV encryption specifically)
-- [ ] Look more into Addra/FastPIR source code
+- [x] Start doing more specific research into assigned topics (FastPIR)
+- [x] Look more into Addra/FastPIR source code
 
 ### Accomplishments
+
+#### Sunday, 10/17 (3 hours)
+
+- Looked more deeply into FastPIR and the FastPIR source code and took [notes](papers/fastpir.md)
+
+#### Friday, 10/15 (1.5 hours)
+
+- Talked with team about our next steps
+- Started discussing how we could go about creating a real voice call
 
 #### Wednesday, 10/13 (2 hours)
 
