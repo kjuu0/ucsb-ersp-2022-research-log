@@ -237,6 +237,99 @@ It just converts the extended database into plaintext.
 
 ## Answer
 
-The answer is generated on the server from the query.
+The answer is generated on the server from the query. The function looks like so:
+
+```cpp
+PIRResponse Server::get_response(uint32_t client_id, PIRQuery query) {
+  if (query.size() != num_query_ciphertext) {
+    std::cout << "query size doesn't match" << std::endl;
+    exit(1);
+  }
+  seal::Ciphertext result;
+  preprocess_query(query);
+  if (!db_preprocessed) {
+    preprocess_db();
+  }
+
+  seal::GaloisKeys gal_keys = client_galois_keys[client_id];
+  seal::Ciphertext response =
+      get_sum(query, gal_keys, 0, num_columns_per_obj / 2 - 1);
+  return response;
+}
+```
+The `preprocess_`-prefixed functions take a vector of plaintexts or ciphertexts and performs a number-theoretic transform (NTT) on them. Number-theoretic transforms are out of scope,
+but essentially they allow for fast convolutions on large number sequences, which is useful for increasing the speed of multiplications.
+
+The brunt of the work is done in `get_sum`:
+
+```cpp
+seal::Ciphertext Server::get_sum(std::vector<seal::Ciphertext> &query,
+                                 seal::GaloisKeys &gal_keys, uint32_t start,
+                                 uint32_t end) {
+  seal::Ciphertext result;
+
+  if (start != end) {
+    int count = (end - start) + 1;
+    int next_power_of_two = get_next_power_of_two(count);
+    int mid = next_power_of_two / 2;
+    seal::Ciphertext left_sum =
+        get_sum(query, gal_keys, start, start + mid - 1);
+    seal::Ciphertext right_sum = get_sum(query, gal_keys, start + mid, end);
+    evaluator->rotate_rows_inplace(right_sum, -mid, gal_keys);
+    evaluator->add_inplace(left_sum, right_sum);
+    return left_sum;
+  } else {
+
+    seal::Ciphertext column_sum;
+    seal::Ciphertext temp_ct;
+    evaluator->multiply_plain(
+        query[0], encoded_db[num_query_ciphertext * start], column_sum);
+
+    for (int j = 1; j < num_query_ciphertext; j++) {
+      evaluator->multiply_plain(
+          query[j], encoded_db[num_query_ciphertext * start + j], temp_ct);
+      evaluator->add_inplace(column_sum, temp_ct);
+    }
+    evaluator->transform_from_ntt_inplace(column_sum);
+    return column_sum;
+  }
+}
+```
+
+Essentially, `get_sum` recursively calls itself on each half of the database. Once we're at a single database column (or 2), we multiply all of the query ciphertexts
+with all of the rows in the column(s), extracting the data at these column(s). We accumulate the results, since accumulating `0`s won't affect the sum. Finally,
+we convert the ciphertext from it's NTT form back into it's regular ciphertext form, and return it.
+
+When `get_sum` gets results from its two halves, it combines the sums by rotating the ciphertexts. Without this step, we are wasting a lot of memory, since the majority
+of results from `get_sum` will be primarily `0`s. By rotating, we can fill the empty space. For example, if we have `[0, 0, a, 0]` from column 1 and `[0, 0, b, 0]` from
+column 2, there's no need to return both of them; why not combine them by rotating one and then summing them? So, we can rotate `[0, 0, b, 0] => [0, 0, 0, b]`, then 
+combine that with the result from column 1 to obtain `[0, 0, a, b]`. By recursively combining, we can end up with a single ciphertext, instead of `num_query_ciphertext` amount
+of ciphertexts. 
+
+The decision to split based off of the `next_power_of_two` is important as well; BFV row rotations are fast for powers of two, since non-powers of two have to be composed of
+powers of two. 
+
+Once the two halves have been encoded and merged, we can return the ciphertext to the user.
+
+## Decode
+
+Finally, the client receives the ciphertext and can decode it. The code looks like this:
+
+```cpp
+std::vector<unsigned char> client::decode_response(PIRResponse response,
+                                                   uint32_t index) {
+  seal::plaintext pt;
+  std::vector<uint64_t> decoded_response;
+  size_t row_size = n / 2;
+  decryptor->decrypt(response, pt);
+  batch_encoder->decode(pt, decoded_response);
+
+  decoded_response = rotate_plain(decoded_response, index % row_size);
+
+  return decode(decoded_response);
+}
+```
+First, we decrypt the ciphertext into a plaintext, then decode the plaintext into a list of `uint64_t`. However, due to our rotation operation, the response is now rotated.
+We just need to rotate it back based off of our index, then decode the rightfully rotated response into a list of bytes.
 
 
