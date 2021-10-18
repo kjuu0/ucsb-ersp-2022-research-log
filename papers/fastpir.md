@@ -10,6 +10,8 @@ CPIR schemes generally consist of query, repsonse, and decode steps, and FastPIR
 
 ## Setup
 
+### FastPIR Params
+
 Before we can execute the FastPIR protocol though, we need to do some setup, especially when it comes to encryption. FastPIR heavily relies on the properties of the 
 Brakerski/Fan-Vercauteren (BFV) homomorphic encryption scheme to achieve metadata privacy. More details about how FastPIR takes advantage of these properties
 will come later, although a deeper dive into the inner workings behind BFV encryption is out of scope. 
@@ -81,7 +83,9 @@ Then, we calculate the number of rows in our **encoded** database (this is not t
 db_rows = ceil(num_obj / (double)POLY_MODULUS_DEGREE) * num_columns_per_obj;
 ```
 
-It is not too clear to me how this is calculated either, but I think it is related the forementioned query optimization.
+It is not too clear to me how this is calculated either, but it is related the forementioned query optimization.
+
+### Client
 
 Finally, now that all the FastPIR parameters have been calculated, we can see how the FastPIR client uses these parameters:
 
@@ -124,6 +128,32 @@ row/column rotations, and dramatically increases performance on these plaintexts
 
 Now, we finally have our client set up!
 
+### Server
+
+Some setup has to be done on the server as well. The constructor also takes in the same `FastPIRParams` object:
+
+```cpp
+Server::Server(FastPIRParams params) {
+  context = seal::SEALContext::Create(params.get_seal_params());
+  N = params.get_poly_modulus_degree();
+  plain_bit_count = params.get_plain_modulus_size();
+
+  evaluator = new seal::Evaluator(context);
+  batch_encoder = new seal::BatchEncoder(context);
+
+  this->num_obj = params.get_num_obj();
+  this->obj_size = params.get_obj_size();
+
+  num_query_ciphertext = params.get_num_query_ciphertext();
+  num_columns_per_obj = params.get_num_columns_per_obj();
+  db_rows = params.get_db_rows();
+  db_preprocessed = false;
+}
+```
+
+Most of the constructor is simply just taking in the FastPIR params, since the server doesn't need to do too much encrypting. The `seal::Evaluator` is what allows
+us to performs computations on ciphertexts.
+
 ## Query
 
 Now, we can look at how our client can query for some index without the server knowing the specific index. A query is just a list of ciphertexts that encode our
@@ -162,5 +192,51 @@ we'll get to in the answer step.
 
 In the context of Addra, this tradeoff is worth it, as it makes the initial dialing phase more expensive but allows for much cheaper answers, which is where we typically 
 bottleneck.
+
+In order to use this optimization though, our database has to be altered. The following code initializes and encodes a database to be compatible with this optimization:
+
+```cpp
+void Server::set_db(std::vector<std::vector<unsigned char>> db) {
+  assert(db.size() == num_obj);
+  std::vector<std::vector<uint64_t>> extended_db(db_rows);
+  for (int i = 0; i < db_rows; i++) {
+    extended_db[i] = std::vector<uint64_t>(N, 1ULL);
+  }
+  int row_size = N / 2;
+
+  for (int i = 0; i < num_obj; i++) {
+    std::vector<uint64_t> temp = encode(db[i]);
+
+    int row = (i / row_size);
+    int col = (i % row_size);
+    for (int j = 0; j < num_columns_per_obj / 2; j++) {
+      extended_db[row][col] = temp[j];
+      extended_db[row][col + row_size] = temp[j + (num_columns_per_obj / 2)];
+      row += num_query_ciphertext;
+    }
+  }
+  encode_db(extended_db);
+  return;
+}
+```
+
+First, we encode each object so that it is in a form that can be encoded into plaintext. Then, we insert each encoded item into our extended database.
+The code has similarities to the query generating code, in that we need to encode our data in a multidimensional manner.
+
+The `encode_db` function is simpler:
+
+```cpp
+void Server::encode_db(std::vector<std::vector<uint64_t>> db) {
+  encoded_db = std::vector<seal::Plaintext>(db.size());
+  for (int i = 0; i < db.size(); i++) {
+    batch_encoder->encode(db[i], encoded_db[i]);
+  }
+}
+```
+It just converts the extended database into plaintext.
+
+## Answer
+
+The answer is generated on the server from the query.
 
 
