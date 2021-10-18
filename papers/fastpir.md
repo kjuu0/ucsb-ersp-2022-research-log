@@ -124,5 +124,43 @@ row/column rotations, and dramatically increases performance on these plaintexts
 
 Now, we finally have our client set up!
 
+## Query
+
+Now, we can look at how our client can query for some index without the server knowing the specific index. A query is just a list of ciphertexts that encode our
+query for the index. In code, this is just a `std::vector<seal::Ciphertext>`. The code to generate a query looks like this:
+
+```cpp
+  size_t slot_count = batch_encoder->slot_count();
+  size_t row_size = slot_count / 2;
+
+  for (int i = 0; i < num_query_ciphertext; i++) {
+    std::vector<uint64_t> pod_matrix(slot_count, 0ULL);
+    if ((index / row_size) == i) {
+      pod_matrix[index % row_size] = 1;
+      pod_matrix[row_size + (index % row_size)] = 1;
+    }
+    batch_encoder->encode(pod_matrix, pt);
+    encryptor->encrypt_symmetric(pt, query[i]);
+  }
+```
+
+First, we obtain the `slot_count` and `row_size` from the `batch_encoder`. The `slot_count` is just equal to `N` or the `POLY_MODULUS_DEGREE`, which is just the size of our
+ciphertext. Since the batch encoder treats a ciphertext as a `2 x N/2` matrix, `slot_count / 2` just gives us the size of the row, which is `N/2`.
+
+Now, we generate `num_query_ciphertext` amount of ciphertexts for a query. At a high-level, we want to generate a 1-hot encoding for our query, which is just a all `0` vector 
+with a `1` representing the index we want. Then, all the server has to do is multiply this 1-hot encoding against its encoded database, and the `0`s will cancel all the other 
+data out and leave us with the data we're interested in. That is what the loop is doing; for each ciphertext, it initializes it to all `0`s, and then checks if the index we're
+querying for exists within this ciphertext. If so, we set the index for this ciphertext equal to `1`. Then we just encode the data into a plaintext, and then encrypt
+that plaintext into a ciphertext and store it in our query.
+
+However, notice that we set two values in our ciphertext equal to `1`; doesn't that break our 1-hot encoding? Actually, this is the optimization mentioned before.
+Notice how `num_query_ciphertext` is double the size needed to query all the rows in our database; this is actually because we can query two rows in our database at
+the same time. Every ciphertext we're generating looks something like `[[0, 0, 0, 0], [0, 0, 0, 0]]`, due to the batch encoder. Now, we can treat this ciphertext like it's
+querying two rows, where the first half of the ciphertext is querying the first row and the second is querying the second. So, if we have `[[0, 0, 1, 0], [0, 0, 1, 0]]`, we
+can get two values from a row with one multiplication operation. Again, this makes the query size two times larger, but it reduces some expensive rotation operations that
+we'll get to in the answer step.
+
+In the context of Addra, this tradeoff is worth it, as it makes the initial dialing phase more expensive but allows for much cheaper answers, which is where we typically 
+bottleneck.
 
 
