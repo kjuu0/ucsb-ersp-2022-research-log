@@ -332,4 +332,26 @@ std::vector<unsigned char> client::decode_response(PIRResponse response,
 First, we decrypt the ciphertext into a plaintext, then decode the plaintext into a list of `uint64_t`. However, due to our rotation operation, the response is now rotated.
 We just need to rotate it back based off of our index, then decode the rightfully rotated response into a list of bytes.
 
+## Recursion
+
+Currently, the query size is of order `O(N)`, where `N` is the number of rows/mailboxes in the system. This is true for most CPIR schemes, although Kushilevitz, Ostrovsky,
+and Stern have proposed a recursive scheme to decrease the size of the query. It does so by converting the database (initially 1-dimensional, ignoring the dimension for 
+the messages) into `d` dimensions. So, if `d=2`, then our database of dimension `N x 1` will be converted to a database of `N^(1/2) x N^(1/2)`. Then, instead of generating a 
+single 1-hot encoded query ciphertext (ignoring partitioning) for the index, we generate `d` query ciphertexts for each dimension. Clearly, the query size is now of order
+`O(dN^(1/d))`.
+
+Then, when the server receives these `d` query ciphertexts, it continues multiplying using each query ciphertext, and on each multiplication we isolate some dimension
+of the database. For example, given `d=2`, we have two query ciphertexts, one for the rows and one for the columns. If we multiply each row by the column ciphertext, we
+have extracted the columns that we are interested in. Then, when we multiply the columns by the row query ciphertext, we isolate the exact element that we're interested in.
+This can be generalized to `d` dimensions. The answer step now requires more multiplications. Originally we only needed `O(N)` multiplications (we partition the rows based 
+off of `N`, the size of the ciphertext), but now this costs `O(dN)`. 
+
+This method makes a tradeoff between the size of the query and the amount of time consumed in the answer step. For `d < log(n)`, communication becomes sublinear, but larger
+values of `d` makes communication superlinear.
+
+## Sources
+- [FastPIR paper](https://eprint.iacr.org/2021/044.pdf)
+- [FastPIR source code](https://github.com/ishtiyaque/fastpir)
+- [Recursion](https://eprint.iacr.org/2019/1483.pdf)
+
 
