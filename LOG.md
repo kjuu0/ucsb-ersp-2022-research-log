@@ -1,11 +1,42 @@
 # Research Log
 
+## Week 5 (10/25-10/31)
+
+### Goals
+
+- [ ] Investigate research topics/questions
+
+### Accomplishments
+
+#### Monday (1 hour)
+
+- Brainstormed research problems/topics
+  - High-level:
+    - Preserve metadata privacy between two users in a system
+    - Improve scalability of the system
+    - Decrease latency of the system
+    - Optimize resource usage of the system
+    - Applying Addra to real-world use cases
+  - Low-level:
+    - Optimizing the Addra protocol to scale better through parallelism (CPU or GPU)
+    - Decreasing general communications costs   
+
 ## Week 4 (10/18-10/24)
 
 ### Goals
 
-- [ ] Prepare teaching materials on FastPIR
-- [ ] Investigate recursion in CPIR schemes
+- [x] Prepare teaching materials on FastPIR
+- [x] Investigate recursion in CPIR schemes
+
+### Accomplishments
+
+#### Wednesday (0.5 hours)
+
+- Finished scheduling a weekly meeting time with Ishtiyaque
+
+#### Tuesday (2 hours)
+
+- Did more investigation into recursion and FastPIR, details are in the same [notes](papers/fastpir.md)
 
 ## Week 3 (10/11-10/17)
 
