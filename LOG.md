@@ -8,6 +8,10 @@
 
 ### Accomplishments
 
+#### Tuesday (2 hours)
+
+- Contributed/started the [literature search for our group](https://docs.google.com/document/d/17aSD51Y-_eXkkHOTgMwNBWvz1hmFJgX7GAKLw4llidg/edit)
+
 #### Monday (1 hour)
 
 - Brainstormed research problems/topics
