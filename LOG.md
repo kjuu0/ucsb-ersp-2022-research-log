@@ -11,7 +11,7 @@
 
 #### Monday (1 hour)
 
-- Research on GPU
+- [Read and summarized research article on GPUs](https://docs.google.com/document/d/17aSD51Y-_eXkkHOTgMwNBWvz1hmFJgX7GAKLw4llidg/edit)
 
 ## Week 5 (10/25-10/31)
 
