@@ -1,10 +1,23 @@
 # Research Log
 
+## Week 6 (11/01 - 11/06)
+
+### Goals
+
+- [ ] Decide on a research problem
+- [ ] Do more research into the research problem
+
+### Accomplishments
+
+#### Monday (1 hour)
+
+- Research on GPU
+
 ## Week 5 (10/25-10/31)
 
 ### Goals
 
-- [ ] Investigate research topics/questions
+- [x] Investigate research topics/questions
 
 ### Accomplishments
 
