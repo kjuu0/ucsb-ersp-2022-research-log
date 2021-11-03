@@ -4,10 +4,25 @@
 
 ### Goals
 
-- [ ] Decide on a research problem
-- [ ] Do more research into the research problem
+- [x] Decide on a research problem
+- [x] Do more research into the research problem
 
 ### Accomplishments
+
+#### Wednesday (2 hours)
+
+- Finished writing the intro to our [research proposal](https://www.overleaf.com/project/618062838f6fa9d90c073fdb)
+
+#### Tuesday (0.5 hours)
+
+- Talked to team and chose a research problem between 1) GPU parallelizing FastPIR, 2) utilizing Addra in an end-to-end system, supporting actual voice calls, and 3) reworking Addra for asynchronous applications
+  - Nico and I were heavily in favor for GPU, but Jerry did not like it much, Allison seemed impartial
+    - Jerry was primarily worried about the time investment for learning GPUs, which I also was worried about it (but I think we could've learned it)
+    - Nico and I liked the learning opportunity
+  - In the end, we decided on option 2, since none of us were against it like the GPU project
+    - Good opportunity to learn about voice encodings
+    - Client-server architecture
+    - Real application
 
 #### Monday (1 hour)
 
