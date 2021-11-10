@@ -1,5 +1,17 @@
 # Research Log
 
+## Week 7 (11/07 - 11/12)
+
+### Goals
+
+- [ ] Dive deeper into PortAudio, LPCNet, AWS EC2
+
+### Accomplishments
+
+#### Wednesday (1 hour)
+
+- Reviewed and added to our [proposed solution](https://www.overleaf.com/project/618062838f6fa9d90c073fdb)
+
 ## Week 6 (11/01 - 11/06)
 
 ### Goals
@@ -9,9 +21,16 @@
 
 ### Accomplishments
 
+#### Friday (2 hours)
+
+- Met with team to plan out a high-level architecture for our system utilizing Addra
+  - [Diagram](https://drive.google.com/drive/u/1/folders/1HACM6sKpT_VdpdnxVF3nLHT7EG-uxq0M)
+  - Looked into voice encoding libraries like LPCNet, audio I/O libraries like PortAudio, cloud solutions for the backend like AWS EC2
+
 #### Wednesday (2 hours)
 
 - Finished writing the intro to our [research proposal](https://www.overleaf.com/project/618062838f6fa9d90c073fdb)
+- Met with Ishtiyaque and the professors and informed them about our decision
 
 #### Tuesday (0.5 hours)
 
