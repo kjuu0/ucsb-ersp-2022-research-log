@@ -4,9 +4,16 @@
 
 ### Goals
 
-- [ ] Dive deeper into PortAudio, LPCNet, AWS EC2
+- [x] Dive deeper into PortAudio, LPCNet, AWS EC2
 
 ### Accomplishments
+
+#### Friday (2 hours)
+
+- Met with team and worked on our proposal
+  - Planned out revision strategies for part 1 & 2
+  - Wrote our evaluation & implementation plan for part 3
+- Created a [Kanban board to track things we need to do](https://github.com/kjuu0/cs110-proposal/projects/1)
 
 #### Wednesday (1 hour)
 
