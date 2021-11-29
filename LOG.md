@@ -1,6 +1,85 @@
 # Research Log
 
-## Week 7 (11/07 - 11/12)
+## Week 10 (11/29 - 12/05)
+
+### Goals
+
+- [ ] Do more research into SEAL
+- [ ] Prepare the final presentation slides
+- [ ] Last revision of our proposal
+
+### Accomplishments
+
+#### Monday (3 hours)
+
+- Worked with Allison on presentation slides
+  - Wrote slides on the protocol
+- Worried about content pacing & time
+- Set up meeting with Ishtiyaque for next steps on SEAL parallelization & grad student interview for tomorrow
+
+## Week 9 (11/22 - 11/28)
+
+### Goals
+
+- [x] Familiarize self with SEAL
+- [x] Define concrete goals for SEAL familiarization
+- [x] Revise proposal
+
+### Accomplishments
+
+#### Wednesday (0.5 hours)
+
+- Met with Allison to discuss some concrete goals for SEAL familiarization, as well as a rough deadline (next Monday)
+
+#### Tuesday (2 hours)
+
+- Added section on how components interact and how a direct phone call works
+
+#### Monday (1.5 hours)
+
+- Received feedback about our proposal from other students
+  - From my reviewer specifically:
+    - Define more terms (RPC, full duplex, etc.)
+    - Generate more motivation for metadata privacy (like % of people who get their data stolen??)
+    - Give more connection between components in the architecture
+  - Aggregated feedback from other students
+    - Define more terms
+    - Give more importance/motivation for metadata privacy (specific examples)
+    - Give a high level overview at the end as to how the components of the client & server connect (we can reference the figures here)
+    - Explain more (at a high level?) how Addra works
+    - Clear up the thesis? (I thought it was clear enough but ok)
+    - Add a nicer title
+- Divided up the work amongst teammates
+
+## Week 8 (11/15 - 11/21)
+
+### Goals
+
+- [x] Add more detail (specifically implementation) to the proposal
+
+### Accomplishments
+
+### Friday (1 hour)
+
+- Met with Ishtiyaque to discuss side SEAL parallelization project
+- Loose guideline of what to expect and what the project is aout
+
+### Wednesday (1 hour)
+
+- Added diagram for server side architecture
+- Defined server-side components and how they interat
+
+### Tuesday (1 hour)
+
+- Added diagram for client side architecture
+- Defined more components and how they interacted
+
+#### Monday (2 hours)
+
+- Met with team and highlighted areas to improve
+  - More detail on implementation
+
+## Week 7 (11/08 - 11/14)
 
 ### Goals
 
@@ -19,7 +98,7 @@
 
 - Reviewed and added to our [proposed solution](https://www.overleaf.com/project/618062838f6fa9d90c073fdb)
 
-## Week 6 (11/01 - 11/06)
+## Week 6 (11/01 - 11/07)
 
 ### Goals
 
