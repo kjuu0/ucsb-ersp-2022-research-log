@@ -10,6 +10,12 @@
 
 ### Accomplishments
 
+#### Tuesday (1.5 hours)
+
+- Met with Ishtiyaque to discuss next steps in SEAL parallelization project
+  - Assigned a relatively simple SEAL task to demonstrate knowledge
+  - Interviewed Ishtiyaque about grad student life
+
 #### Monday (3 hours)
 
 - Worked with Allison on presentation slides
