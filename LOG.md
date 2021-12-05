@@ -4,11 +4,19 @@
 
 ### Goals
 
-- [ ] Do more research into SEAL
-- [ ] Prepare the final presentation slides
-- [ ] Last revision of our proposal
+- [x] Do more research into SEAL
+- [x] Prepare the final presentation slides
+- [x] Last revision of our proposal
 
 ### Accomplishments
+
+#### Friday (4 hours)
+
+- Met with team to finish up proposal revisions
+  - Made the timeline more detailed
+  - Elaborated on evaluation criteria
+- Discussed with team about working over winter break
+- Worked on and finished basic solution to SEAL task that Ishtiyaque gave me (hidden repo)
 
 #### Tuesday (1.5 hours)
 
