@@ -10,19 +10,28 @@
 
 ### Accomplishments
 
+#### Sunday (1 hour)
+
+- Got feedback from Ishtiyaque about my basic solution and implemented feedback
+  - Should use batch encoding
+  - Should implement own exponentiation algorithm
+
+#### Saturday (1 hour)
+
+- Worked on and finished basic solution to SEAL task that Ishtiyaque gave me (hidden repo)
+
 #### Friday (4 hours)
 
 - Met with team to finish up proposal revisions
   - Made the timeline more detailed
   - Elaborated on evaluation criteria
 - Discussed with team about working over winter break
-- Worked on and finished basic solution to SEAL task that Ishtiyaque gave me (hidden repo)
 
 #### Tuesday (1.5 hours)
 
 - Met with Ishtiyaque to discuss next steps in SEAL parallelization project
   - Assigned a relatively simple SEAL task to demonstrate knowledge
-  - Interviewed Ishtiyaque about grad student life
+  - [Interviewed Ishtiyaque about grad student life](/INTERVIEW.md)
 
 #### Monday (3 hours)
 
