@@ -1,5 +1,64 @@
 # Research Log
 
+## Week 13 (01/17 - 01/23)
+
+### Goals 
+
+- [x] Begin work on database preprocessing steps 
+- [x] Start tackling worker load distribution
+
+#### Thursday (2 hours)
+
+- Implemented database preprocessing threads to increase speed of homomorphic multiplication
+
+#### Wednesday (2 hours)
+
+- Implemented load distribution of main server to worker servers
+
+## Week 12 (01/10 - 01/16)
+
+### Goals
+
+- [x] Start working on the Addra protocol on the server side
+
+#### Friday (1 hour)
+
+- Helped Allison set up her environment for the `rpclib` example
+
+#### Thursday (1 hour)
+
+- Gave presentation on Addra
+
+#### Wednesday (3 hours)
+
+- Worked on setting up round-based communication on the server
+- Got an example working with the client and personal AWS EC2 instance
+
+#### Tuesday (1 hours)
+
+- Sync'ed up with Jerry on his `portaudio` experiments
+  - Helped give some intuition on function pointers
+
+## Week 11 (01/03 - 01/09)
+
+### Goals
+
+- [x] Investigate AWS EC2 for server hosting
+- [x] Get a basic documented AWS EC2 client-server example hosted with instructions
+
+#### Friday (2 hours)
+
+- Submitted PR for `rpc` example
+- Helped Jerry debug include path issues
+
+#### Thursday (2 hours)
+
+- Wrote basic `rpclib` based example to run on AWS EC2
+
+#### Tuesday (1 hour)
+
+- Set up AWS EC2 instance
+
 ## Week 10 (11/29 - 12/05)
 
 ### Goals
